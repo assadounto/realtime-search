@@ -9,7 +9,7 @@ export default class extends Controller {
     }, 1000)
   }
 
-  clearSearch() {
+     clearSearch() {
    
     const url = new URL(window.location.href)
     url.searchParams.delete('search') 
