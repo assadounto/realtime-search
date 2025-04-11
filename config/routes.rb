@@ -11,4 +11,14 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  root "pages#search"
+  get "search", to: "pages#search", as: :search
+  post "enable_analytics", to: "analytics#enable", as: :enable_analytics
+  get  "analytics", to: "analytics#index"
+  get  "history", to: "pages#history"
+  get  "trend", to: "pages#trend"
+
+  
+
 end
