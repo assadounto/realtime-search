@@ -10,4 +10,6 @@ class PagesController < ApplicationController
     @results = Search.where("params ILIKE ?", "%#{query}%")
     
   end
+
+  
 end

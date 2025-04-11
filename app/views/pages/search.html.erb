@@ -18,19 +18,30 @@
     <% end %>
   </div>
 
-  <%# --- Search Form with Live Results --- %>
-  <%= form_with(url: search_path, method: :get, data: { controller: "search-form", search_form_target: "form", turbo_frame: "articles" }) do |form| %>
+  <%# --- Search Form --- %>
+  <%= form_with(url: search_path, method: :get, data: { controller: "search-form", search_form_target: "form", action: "turbo:submit-end->search-form#submitEnd", turbo_frame: "articles" }) do |form| %>
     <div class="flex flex-col items-center gap-4 relative">
 
-      <%# --- Input --- %>
+      <%# --- Input with Clear Icon --- %>
       <div class="w-full relative">
         <%= form.text_field :search,
-            class: "w-full py-3 px-5 rounded-full border border-gray-300 focus:ring-2 focus:ring-yellow-400 focus:outline-none text-gray-800 placeholder-gray-400",
-            placeholder: "Search...",
-            data: { action: "input->search-form#search" },
-            value: params[:search] %>
+          class: "w-full py-3 px-5 pr-10 rounded-full border border-gray-300 focus:ring-2 focus:ring-yellow-400 focus:outline-none text-gray-800 placeholder-gray-400",
+          placeholder: "Search...",
+          id: "search-input",
+          data: { action: "input->search-form#search" },
+          value: params[:search] %>
 
-        <%# --- Search Results Dropdown (Always visible when input is not empty) --- %>
+        <%# --- X Icon to Clear --- %>
+        <% if params[:search].present? %>
+          <button 
+            type="button"
+          data-action="click->search-form#clearSearch"
+            class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-red-500 text-lg font-bold">
+            ×
+          </button>
+        <% end %>
+
+        <%# --- Live Search Results --- %>
         <% if params[:search].present? %>
           <div class="absolute z-10 mt-2 w-full rounded-lg bg-white shadow-lg max-h-96 overflow-y-auto">
             <%= turbo_frame_tag "articles" do %>
@@ -42,9 +53,9 @@
         <% end %>
       </div>
 
-      <%# --- Search Button --- %>
+      <%# --- Submit --- %>
       <%= form.submit 'Search',
-          class: "bg-yellow-400 hover:bg-yellow-500 text-white px-6 py-2 rounded-full font-medium transition duration-200" %>
+        class: "bg-yellow-400 hover:bg-yellow-500 text-white px-6 py-2 rounded-full font-medium transition duration-200" %>
 
     </div>
   <% end %>
