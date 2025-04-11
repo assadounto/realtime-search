@@ -1,8 +1,12 @@
 # Search Engine
-This is a realtime search engine that shows what people searched for the most.
+This is a real time search engine that shows what people searched for the most.
 
 ## Notes
-  In this project I created a realtime search with analysis of most searched items. I separated user data by getting visitors' user agent so that users data are not mixed up.In this regard, the user is anonymous. I proposed way to sign in and sign up to associate users to the database(Not implemeted yet). In the background , I implemented  active jobs to create and manage analytics .For realtime scalabillty, I propose redis with active jobs 
+  In this project, I implemented a real-time search feature with analytics to track the most searched items. To ensure user data remains distinct, I separated visitor data by capturing the user agent, allowing for anonymous usage without mixing data.
+
+   For background processing, I utilized Active Jobs to handle the creation and management of analytics. To support real-time scalability, I propose integrating Redis with Active Jobs for improved performance and queue management.
+
+
 
 ## Live Link
 [Live Link](https://realtimesearch-ja93.onrender.com/)
