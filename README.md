@@ -24,7 +24,7 @@ To get a local copy up and running follow these simple example steps.
 
 - git clone https://github.com/assadounto/realtime-search
 
-- cd search-engine
+- cd realtime-search
 
 
 ### Prerequisites
