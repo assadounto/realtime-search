@@ -7,9 +7,9 @@ class PagesController < ApplicationController
   def search
     @most_searched = Search.searches_ordered_limited
     query = params[:search] || ""
-    @results = Search.where("params ILIKE ?", "%#{query}%")
-    
+    @results = Search.where("params ILIKE ?", "%#{query}%").distinct
+
   end
 
-  
+
 end
