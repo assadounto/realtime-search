@@ -1,117 +1,79 @@
-# Search Engine
-This is a real time search engine that shows what people searched for the most.
+<div align="center">
 
-## Notes
-  In this project, I implemented a real-time search feature with analytics to track the most searched items. To ensure user data remains distinct, I separated visitor data by capturing the user agent, allowing for anonymous usage without mixing data.
+# Real-Time Search Analytics 🔎
 
-   For background processing, I utilized Active Jobs to handle the creation and management of analytics. To support real-time scalability, I propose integrating Redis with Active Jobs for improved performance and queue management.
+### Rails search experience with analytics for trending queries
 
+A Ruby on Rails application that records search activity and surfaces the terms people search for most.
 
+[Live Demo](https://realtimesearch-ja93.onrender.com/)
 
-## Live Link
-[Live Link](https://realtimesearch-ja93.onrender.com/)
+</div>
 
-## Built With
+---
 
-- Ruby on Rails
-- Postgresql
-- stimulus Js
+## What It Demonstrates
 
+This project explores two connected problems:
 
-## Getting Started
+1. Delivering a responsive search experience.
+2. Capturing useful analytics around what users search for.
 
-To get a local copy up and running follow these simple example steps.
+Search activity is associated with anonymous visitor context so analytics can be collected without requiring every visitor to create an account.
 
-- git clone https://github.com/assadounto/realtime-search
+## Tech Stack
 
-- cd realtime-search
-
-
-### Prerequisites
-To start please have the following running
+- Ruby on Rails 7.2
 - Ruby
-- Rails
-- PostgresSQL
+- PostgreSQL
+- SQLite for supported local workflows
+- Hotwire / Turbo
+- Stimulus
+- Active Job
+- RSpec
+- Docker
+- Render
 
+## Key Ideas
 
-### Setup
+- Real-time search interaction
+- Search analytics
+- Trending-query visibility
+- Anonymous visitor separation
+- Background-job architecture
+- Production deployment configuration
+- Rails testing with RSpec
 
-Install gems with:
+## Background Processing
 
-```
+Analytics work is designed around Rails Active Job. For higher-throughput production workloads, the queue layer can be backed by a dedicated system such as Redis-based workers.
+
+## Local Setup
+
+```bash
+git clone https://github.com/assadounto/realtime-search.git
+cd realtime-search
 bundle install
-```
-
-Setup database with:
-
-```
 rails db:create
 rails db:migrate
-```
-
-Start server with:
-
-```
 rails server
 ```
 
-Open ```http://localhost:3000/``` in your browser.
+Open `http://localhost:3000`.
 
+## Tests
 
-### Run tests
-
-Install npm with:
-
-```
-npm i
+```bash
+bundle exec rspec
 ```
 
-Install rspec with:
+## Deployment
 
-```
-bundle install
-```
-
-and
-
-```
-rails generate rspec:install
-```
-
-run the test with:
-
-```
-rspec spec
-```
-
-
+The repository includes Docker and Render configuration for deployment workflows.
 
 ## Author
 
-👤 **Rich Adu**
+**Richmond Adu-Kyere**
 
 - GitHub: [@assadounto](https://github.com/assadounto)
-- Twitter: [@adukyerer](https://twitter.com/adukyerer)
-
-
-
-## 🤝 Contributing
-
-Contributions, issues, and feature requests are welcome!
-
-Feel free to check the [issues page](https://github.com/assadounto/realtime-search).
-
-
-## Show your support
-
-Give a ⭐️ if you like this project!
-
-
-## Acknowledgments
-
-- Credits go to Emil and rest of team at [HelpJuice](https://www.Helpjuice.com)
-
-
-## 📝 License
-
-This project is [MIT](./LICENCE) licensed.
+- LinkedIn: [Richmond Adu-Kyere](https://www.linkedin.com/in/richmond-adu-kyere-911693236)
